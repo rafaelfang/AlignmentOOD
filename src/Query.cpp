@@ -11,31 +11,34 @@ Query::Query() {
 	// TODO Auto-generated ructor stub
 
 }
-
+Query::Query(string _targetName) {
+	// TODO Auto-generated ructor stub
+	setTargetName(_targetName);
+}
 Query::~Query() {
 	// TODO Auto-generated destructor stub
 }
 
-string& Query::getQueryName() {
-	return queryName;
+string& Query::getQuery() {
+	return query;
 }
 
-void Query::setQueryName(string& queryName) {
-	this->queryName = queryName;
+void Query::setQuery(string& query) {
+	this->query = query;
 }
 
-string& Query::getQuerySequence() {
-	return querySequence;
+int Query::getQueryLength() {
+	return queryLength;
 }
 
-void Query::setQuerySequence(string& querySequence) {
-	this->querySequence = querySequence;
+void Query::setQueryLength(int queryLength) {
+	this->queryLength = queryLength;
 }
 
-int Query::getQuerySequenceLength() {
-	return querySequenceLength;
+string& Query::getTargetName() {
+	return targetName;
 }
 
-void Query::setQuerySequenceLength(int querySequenceLength) {
-	this->querySequenceLength = querySequenceLength;
+void Query::setTargetName(string& targetName) {
+	this->targetName = targetName;
 }

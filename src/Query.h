@@ -8,23 +8,24 @@
 #ifndef QUERY_H_
 #define QUERY_H_
 #include <string>
+#include "Point.h"
 using namespace std;
 class Query {
 public:
 	Query();
-
+	Query(string );
 	virtual ~Query();
-	string& getQueryName();
-	void setQueryName(string& queryName);
-	string& getQuerySequence();
-	void setQuerySequence(string& querySequence);
-	int getQuerySequenceLength();
-	void setQuerySequenceLength(int querySequenceLength);
+	string& getQuery();
+	void setQuery(string& query);
+	int getQueryLength();
+	void setQueryLength(int queryLength);
+	string& getTargetName();
+	void setTargetName(string& targetName);
 
-private:
-	string queryName;
-	string querySequence;
-	int querySequenceLength;
+protected:
+	string targetName;
+	string query;
+	int queryLength;
 };
 
 #endif /* QUERY_H_ */
