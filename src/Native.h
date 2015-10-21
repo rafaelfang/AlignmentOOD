@@ -13,9 +13,13 @@
 class Native: public Query {
 public:
 	Native();
+	Native(Query);
 	virtual ~Native();
+	Point* getCAlphaCoords();
+	void setCAlphaCoords(Point*);
+
 private:
-	Point*
+	Point* cAlphaCoords;
 };
 
 #endif /* NATIVE_H_ */
