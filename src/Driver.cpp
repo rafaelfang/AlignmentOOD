@@ -11,41 +11,28 @@
 #include "Native.h"
 #include "Point.h"
 #include "Template.h"
+#include "BlastParser.h"
 #include <stdlib.h>
 using namespace std;
 
 int main(int argc, char* argv[]) {
-	Query query("T0759");
-	cout << "target name" << query.getTargetName() << endl;
-	query.setQueryLength(53);
-	cout << "query Length" << query.getQueryLength() << endl;
-	string testQuery("asdfasdf");
-	query.setQuery(testQuery);
-	cout << "query" << query.getQuery() << endl;
 
-	Native native(query);
-	cout << "native name" << native.getTargetName() << endl;
-	cout << "native length" << native.getQueryLength() << endl;
-	cout << "native sequence " << native.getQuery() << endl;
-	Point testCoords[2];
-	testCoords[0] = Point(1.2, 2.3, 4.5);
-	testCoords[1] = Point(2.3, 4.2, 1.6);
-	native.setCAlphaCoords(testCoords);
-	Point* testCoordOut = native.getCAlphaCoords();
-	cout << "native 3D" << testCoordOut[0].getX() << endl;
+	if (argc != 3) {
+		cout << "the input should like this:" << endl;
+		cout << "<excutable> <type> <rootName>" << endl;
+		return 0;
+	}
+	if (strcmp(argv[1], "-blaPDB") == 0) {
 
-	Template aTemplate(query);
-	cout << "aTemplate name" << native.getTargetName() << endl;
-	string templateName("1H2L_A");
-	aTemplate.setTemplateName(templateName);
-	cout << "aTemplate name" << aTemplate.getTemplateName() << endl;
-	string methodUsed("blast");
-	aTemplate.setMethodUsed(methodUsed);
-	cout << "aTemplate method used " << aTemplate.getMethodUsed() << endl;
-	aTemplate.setTemplateCAlphaCoords(testCoords);
-	Point* testTemplateCoordOut = native.getCAlphaCoords();
-	cout << "native 3D" << testTemplateCoordOut[1].getY() << endl;
-
+		string querySeqLocation("/home/cf797/test/casp11Seq/");
+		string alignmentResultLocation("/home/cf797/test/casp11Alignment/");
+		string experimentLocation("/home/cf797/test/casp11OutputResultFolder/");
+		string proteinDatabaseLocation("/home/lihongb/DATABASE/DBInfo/");
+		BlastParser blastParser(argv[2]);
+		blastParser.parseFile(alignmentResultLocation);
+		blastParser.storeRecords(experimentLocation);
+		blastParser.storeCoordinates(experimentLocation,proteinDatabaseLocation);
+	}
 
 	return 0;
 }
