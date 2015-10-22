@@ -8,6 +8,10 @@
 #ifndef QUERY_H_
 #define QUERY_H_
 #include <string>
+#include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
+#include <string.h>
 #include "Point.h"
 using namespace std;
 class Query {
