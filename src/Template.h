@@ -21,9 +21,16 @@ public:
 	void setTemplateCAlphaCoords(Point* templateCAlphaCoords);
 	string& getTemplateName();
 	void setTemplateName(string& templateName);
+	void loadTemplateInfo(string);
+	string& getTemplateSequenceInfo();
+	void setTemplateSequenceInfo(string& templateSequenceInfo);
+	int getTemplateSequenceLength();
+	void setTemplateSequenceLength(int templateSequenceLength);
 
 protected:
 	string templateName;
+	string templateSequenceInfo;
+	int templateSequenceLength;
 	string methodUsed;
 	Point* templateCAlphaCoords;
 };
