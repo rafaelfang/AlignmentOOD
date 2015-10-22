@@ -1,6 +1,8 @@
-alignmentOOD: Alignment.o Native.o Point.o Query.o Template.o Driver.o
-	g++  Alignment.o Native.o Point.o Query.o Template.o Driver.o -o alignmentOOD
+alignmentOOD: BlastParser.o Alignment.o Native.o Point.o Query.o Template.o Driver.o
+	g++  BlastParser.o Alignment.o Native.o Point.o Query.o Template.o Driver.o -o alignmentOOD
 
+BlastParser.o:BlastParser.cpp
+	g++ -c BlastParser.cpp
 	
 Alignment.o: Alignment.cpp
 	g++ -c Alignment.cpp
