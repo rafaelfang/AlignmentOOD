@@ -16,6 +16,8 @@ public:
 	Alignment(Template);
 	Point* fetchSubjectAlignedPart3DPointsForQuery();
 
+
+
 	virtual ~Alignment();
 	double getExpectedValue();
 	void setExpectedValue(double expectedValue);
