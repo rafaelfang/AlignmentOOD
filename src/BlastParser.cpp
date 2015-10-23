@@ -29,8 +29,15 @@ void BlastParser::storeRecords(string resultPosition) {
 		myfile << "\t{" << endl;
 		myfile << "\t\"hitName\":\"" << blastRecords[i].getTemplateName()
 				<< "\"," << endl;
+		myfile << "\t\"score\":\"" << blastRecords[i].getScore() << "\","
+				<< endl;
 		myfile << "\t\"expect\":\"" << blastRecords[i].getExpectedValue()
 				<< "\"," << endl;
+		myfile << "\t\"identities\":\"" << blastRecords[i].getItentities()
+				<< "%\"," << endl;
+		myfile << "\t\"positives\":\"" << blastRecords[i].getPositives()
+				<< "%\"," << endl;
+		myfile << "\t\"gaps\":\"" << blastRecords[i].getGaps() << "%\"," << endl;
 		myfile << "\t\"queryStart\":\"" << blastRecords[i].getQueryStart()
 				<< "\"," << endl;
 		myfile << "\t\"queryPart\":\"" << blastRecords[i].getQueryPart()
@@ -55,13 +62,13 @@ void BlastParser::storeRecords(string resultPosition) {
 	myfile << "]}" << endl;
 	myfile.close();
 }
-void BlastParser::storeCoordinates( string experimentLocation,string proteinDatabaseLocation) {
+void BlastParser::storeCoordinates(string experimentLocation,
+		string proteinDatabaseLocation) {
 	ofstream myfile;
 	string outputFile(experimentLocation);
 	outputFile += rootName;
 	outputFile += "_coords.txt";
 	myfile.open((char*) outputFile.c_str());
-
 
 	for (int i = 0; i < blastRecords.size(); i++) {
 
@@ -74,8 +81,9 @@ void BlastParser::storeCoordinates( string experimentLocation,string proteinData
 		queryPoints = blastRecords[i].fetchSubjectAlignedPart3DPointsForQuery();
 		myfile << "Hit" << i << endl;
 		for (int j = 0; j < queryPointsArrSize; j++) {
-			myfile << "\t" << queryPoints[j].getX() << "," << queryPoints[j].getY()
-					<< "," << queryPoints[j].getZ() << endl;
+			myfile << "\t" << queryPoints[j].getX() << ","
+					<< queryPoints[j].getY() << "," << queryPoints[j].getZ()
+					<< endl;
 		}
 		free(queryPoints);
 	}
@@ -141,10 +149,31 @@ void BlastParser::parseFile(string blastResultFileLocation) {
 				double expect;
 				sscanf(pch2 + 1, "%lf", &expect);
 
-				//blastRecord.setScore(score);
+				blastRecord.setScore(score);
 				blastRecord.setExpectedValue(expect);
 				/*cout << "score: " << score << endl;
 				 cout << "expect: " << expect << endl;*/
+				fgets(line, lineLength, fptr); //fetch identities line
+
+				char* pch3 = strstr(line, "(");
+				int identities;
+				sscanf(pch3 + 1, "%d", &identities);
+				blastRecord.setItentities(identities);
+
+				char* pch4 = strstr(pch3 + 1, "(");
+				int positives;
+				sscanf(pch4 + 1, "%d", &positives);
+				blastRecord.setPositives(positives);
+
+				char* pch5 = strstr(pch4 + 1, "(");
+				if (pch5 == NULL) {
+					blastRecord.setGaps(0);
+				} else {
+					int gaps;
+					sscanf(pch5 + 1, "%d", &gaps);
+					blastRecord.setGaps(gaps);
+				}
+
 			} else if (currentState == 'C') {
 
 				char info0[6], queryPart[200];
