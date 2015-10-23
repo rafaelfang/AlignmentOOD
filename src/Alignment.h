@@ -16,8 +16,6 @@ public:
 	Alignment(Template);
 	Point* fetchSubjectAlignedPart3DPointsForQuery();
 
-
-
 	virtual ~Alignment();
 	double getExpectedValue();
 	void setExpectedValue(double expectedValue);
@@ -33,6 +31,14 @@ public:
 	void setSubjectPart(string& subjectPart);
 	int getSubjectStart();
 	void setSubjectStart(int subjectStart);
+	int getGaps();
+	void setGaps(int gaps);
+	int getItentities();
+	void setItentities(int itentities);
+	int getPositives();
+	void setPositives(int positives);
+	double getScore();
+	void setScore(double score);
 
 private:
 	int queryStart;
@@ -42,6 +48,10 @@ private:
 	string subjectPart;
 	int subjectEnd;
 	double expectedValue;
+	double score;
+	int itentities;
+	int positives;
+	int gaps;
 
 };
 

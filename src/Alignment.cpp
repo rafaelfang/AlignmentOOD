@@ -20,7 +20,6 @@ Alignment::Alignment(Template _template) {
 
 }
 
-
 Point* Alignment::fetchSubjectAlignedPart3DPointsForQuery() {
 
 	int sizeOfAlignment = subjectPart.size();
@@ -42,7 +41,6 @@ Point* Alignment::fetchSubjectAlignedPart3DPointsForQuery() {
 		}
 
 	}
-
 
 	int numOfGapsInQueryPart = 0;
 	for (int i = 0; i < queryPart.size(); i++) {
@@ -127,4 +125,36 @@ int Alignment::getSubjectStart() {
 
 void Alignment::setSubjectStart(int subjectStart) {
 	this->subjectStart = subjectStart;
+}
+
+int Alignment::getGaps() {
+	return gaps;
+}
+
+void Alignment::setGaps(int gaps) {
+	this->gaps = gaps;
+}
+
+int Alignment::getItentities() {
+	return itentities;
+}
+
+void Alignment::setItentities(int itentities) {
+	this->itentities = itentities;
+}
+
+int Alignment::getPositives() {
+	return positives;
+}
+
+void Alignment::setPositives(int positives) {
+	this->positives = positives;
+}
+
+double Alignment::getScore() {
+	return score;
+}
+
+void Alignment::setScore(double score) {
+	this->score = score;
 }
