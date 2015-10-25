@@ -19,7 +19,7 @@ void BlastParser::storeRecords(string resultPosition) {
 	ofstream myfile;
 	string outputFile(resultPosition);
 	outputFile += rootName;
-	outputFile += ".json";
+	outputFile += "_blast.json";
 	myfile.open((char*) outputFile.c_str());
 
 	myfile << "{\"" << rootName << "\":[" << endl;
@@ -31,7 +31,7 @@ void BlastParser::storeRecords(string resultPosition) {
 				<< endl;
 		myfile << "\t\"expect\":\"" << blastRecords[i].getExpectedValue()
 				<< "\"," << endl;
-		myfile << "\t\"identities\":\"" << blastRecords[i].getItentities()
+		myfile << "\t\"identities\":\"" << blastRecords[i].getIdentities()
 				<< "%\"," << endl;
 		myfile << "\t\"positives\":\"" << blastRecords[i].getPositives()
 				<< "%\"," << endl;
@@ -66,7 +66,7 @@ void BlastParser::storeCoordinates(string experimentLocation,
 	ofstream myfile;
 	string outputFile(experimentLocation);
 	outputFile += rootName;
-	outputFile += "_coords.txt";
+	outputFile += "_coords_blast.txt";
 	myfile.open((char*) outputFile.c_str());
 
 	for (int i = 0; i < blastRecords.size(); i++) {
@@ -157,7 +157,7 @@ void BlastParser::parseFile(string blastResultFileLocation) {
 				char* pch3 = strstr(line, "(");
 				int identities;
 				sscanf(pch3 + 1, "%d", &identities);
-				blastRecord.setItentities(identities);
+				blastRecord.setIdentities(identities);
 
 				char* pch4 = strstr(pch3 + 1, "(");
 				int positives;

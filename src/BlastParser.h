@@ -1,7 +1,7 @@
 /*
  * BlastParser.h
  *
- *  Created on: Sep 27, 2015
+ *  Created on: Oct 24, 2015
  *      Author: Chao
  */
 
@@ -34,5 +34,7 @@ private:
 	vector<BlastAlignment> blastRecords;
 
 };
+
+
 
 #endif /* BLASTPARSER_H_ */
