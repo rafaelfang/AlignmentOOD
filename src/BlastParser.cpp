@@ -11,12 +11,10 @@ BlastParser::BlastParser() {
 	// TODO Auto-generated ructor stub
 
 }
-
 BlastParser::BlastParser(string _rootName) {
+	// TODO Auto-generated ructor stub
 	setRootName(_rootName);
-
 }
-
 void BlastParser::storeRecords(string resultPosition) {
 	ofstream myfile;
 	string outputFile(resultPosition);
@@ -37,7 +35,8 @@ void BlastParser::storeRecords(string resultPosition) {
 				<< "%\"," << endl;
 		myfile << "\t\"positives\":\"" << blastRecords[i].getPositives()
 				<< "%\"," << endl;
-		myfile << "\t\"gaps\":\"" << blastRecords[i].getGaps() << "%\"," << endl;
+		myfile << "\t\"gaps\":\"" << blastRecords[i].getGaps() << "%\","
+				<< endl;
 		myfile << "\t\"queryStart\":\"" << blastRecords[i].getQueryStart()
 				<< "\"," << endl;
 		myfile << "\t\"queryPart\":\"" << blastRecords[i].getQueryPart()
@@ -100,7 +99,7 @@ void BlastParser::parseFile(string blastResultFileLocation) {
 		int lineLength = 5000;
 		char line[lineLength];
 
-		Alignment blastRecord;
+		BlastAlignment blastRecord;
 		char prevState = 'N';
 		char currentState = 'N';
 		while (fgets(line, lineLength, fptr) != NULL) {
@@ -254,10 +253,3 @@ BlastParser::~BlastParser() {
 	// TODO Auto-generated destructor stub
 }
 
-string& BlastParser::getRootName() {
-	return rootName;
-}
-
-void BlastParser::setRootName(string& rootName) {
-	this->rootName = rootName;
-}

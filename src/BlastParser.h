@@ -8,8 +8,6 @@
 #ifndef BLASTPARSER_H_
 #define BLASTPARSER_H_
 
-
-
 #include <string>
 #include <vector>
 #include <iostream>
@@ -17,23 +15,23 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "Alignment.h"
-using namespace std;
-class BlastParser {
+
+#include "BlastAlignment.h"
+#include "Parser.h"
+class BlastParser: public Parser {
 public:
 	BlastParser();
 	BlastParser(string);
 	virtual ~BlastParser();
 	void parseFile(string);
-	string& getRootName();
-	void setRootName(string& rootName);
-	void storeCoordinates( string ,string);
+
+	void storeCoordinates(string, string);
 
 	void storeRecords(string);
 
 private:
-	string rootName;
-	vector<Alignment> blastRecords;
+
+	vector<BlastAlignment> blastRecords;
 
 };
 
