@@ -1,10 +1,11 @@
-alignmentOOD: HHSearchAlignment.o  Parser.o BlastParser.o BlastAlignment.o Alignment.o Native.o Point.o Query.o Template.o Driver.o
-	g++  HHSearchAlignment.o  Parser.o BlastParser.o BlastAlignment.o Alignment.o Native.o Point.o Query.o Template.o Driver.o -o alignmentOOD
+alignmentOOD: HHSearchParser.o HHSearchAlignment.o  Parser.o BlastParser.o BlastAlignment.o Alignment.o Native.o Point.o Query.o Template.o Driver.o
+	g++  HHSearchParser.o HHSearchAlignment.o  Parser.o BlastParser.o BlastAlignment.o Alignment.o Native.o Point.o Query.o Template.o Driver.o -o alignmentOOD
 
 Parser.o:Parser.cpp
 	g++ -c Parser.cpp
 
-
+HHSearchParser.o: HHSearchParser.cpp
+	g++ -c HHSearchParser.cpp
 	
 BlastParser.o:BlastParser.cpp
 	g++ -c BlastParser.cpp
