@@ -127,12 +127,12 @@ void Alignment::setSubjectStart(int subjectStart) {
 	this->subjectStart = subjectStart;
 }
 
-int Alignment::getItentities() {
-	return itentities;
+int Alignment::getIdentities() {
+	return identities;
 }
 
-void Alignment::setItentities(int itentities) {
-	this->itentities = itentities;
+void Alignment::setIdentities(int identities) {
+	this->identities = identities;
 }
 
 double Alignment::getScore() {

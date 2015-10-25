@@ -32,8 +32,8 @@ public:
 	int getSubjectStart();
 	void setSubjectStart(int subjectStart);
 
-	int getItentities();
-	void setItentities(int itentities);
+	int getIdentities();
+	void setIdentities(int identities);
 
 	double getScore();
 	void setScore(double score);
@@ -47,7 +47,7 @@ private:
 	int subjectEnd;
 	double expectedValue;
 	double score;
-	int itentities;
+	int identities;
 
 
 };
