@@ -12,7 +12,7 @@
 #include "Point.h"
 #include "Template.h"
 #include "BlastParser.h"
-
+#include "HHSearchParser.h"
 #include <stdlib.h>
 using namespace std;
 
@@ -23,6 +23,7 @@ int main(int argc, char* argv[]) {
 		cout << "<excutable> <type> <rootName>" << endl;
 		return 0;
 	}
+
 	if (strcmp(argv[1], "-blaPDB") == 0) {
 
 		string querySeqLocation("/home/cf797/test/casp11Seq/");
@@ -34,6 +35,17 @@ int main(int argc, char* argv[]) {
 		blastParser.storeRecords(experimentLocation);
 		blastParser.storeCoordinates(experimentLocation,
 				proteinDatabaseLocation);
+	}
+	if (strcmp(argv[1], "-hhsearch") == 0) {
+		string querySeqLocation("/home/cf797/test/casp11Seq/");
+		string alignmentResultLocation("/home/cf797/test/casp11Alignment/");
+		string experimentLocation("/home/cf797/test/casp11OutputResultFolder/");
+		string proteinDatabaseLocation("/home/lihongb/DATABASE/DBInfo/");
+		HHSearchParser hhsearchParser(argv[2]);
+		hhsearchParser.parseFile(alignmentResultLocation);
+		hhsearchParser.storeRecords(experimentLocation);
+		hhsearchParser.storeCoordinates(experimentLocation,
+						proteinDatabaseLocation);
 	}
 
 	return 0;
