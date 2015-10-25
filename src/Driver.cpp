@@ -12,6 +12,7 @@
 #include "Point.h"
 #include "Template.h"
 #include "BlastParser.h"
+
 #include <stdlib.h>
 using namespace std;
 
@@ -31,7 +32,8 @@ int main(int argc, char* argv[]) {
 		BlastParser blastParser(argv[2]);
 		blastParser.parseFile(alignmentResultLocation);
 		blastParser.storeRecords(experimentLocation);
-		blastParser.storeCoordinates(experimentLocation,proteinDatabaseLocation);
+		blastParser.storeCoordinates(experimentLocation,
+				proteinDatabaseLocation);
 	}
 
 	return 0;
