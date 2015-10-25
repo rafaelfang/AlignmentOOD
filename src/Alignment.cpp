@@ -127,28 +127,12 @@ void Alignment::setSubjectStart(int subjectStart) {
 	this->subjectStart = subjectStart;
 }
 
-int Alignment::getGaps() {
-	return gaps;
-}
-
-void Alignment::setGaps(int gaps) {
-	this->gaps = gaps;
-}
-
 int Alignment::getItentities() {
 	return itentities;
 }
 
 void Alignment::setItentities(int itentities) {
 	this->itentities = itentities;
-}
-
-int Alignment::getPositives() {
-	return positives;
-}
-
-void Alignment::setPositives(int positives) {
-	this->positives = positives;
 }
 
 double Alignment::getScore() {

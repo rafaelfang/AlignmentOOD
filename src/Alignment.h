@@ -31,12 +31,10 @@ public:
 	void setSubjectPart(string& subjectPart);
 	int getSubjectStart();
 	void setSubjectStart(int subjectStart);
-	int getGaps();
-	void setGaps(int gaps);
+
 	int getItentities();
 	void setItentities(int itentities);
-	int getPositives();
-	void setPositives(int positives);
+
 	double getScore();
 	void setScore(double score);
 
@@ -50,8 +48,7 @@ private:
 	double expectedValue;
 	double score;
 	int itentities;
-	int positives;
-	int gaps;
+
 
 };
 
