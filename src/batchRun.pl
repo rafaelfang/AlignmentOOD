@@ -18,7 +18,8 @@ foreach $line(@lines) {
 	
 	system($cmd);
 	
+	$cmd1="./alignmentOOD -hhsearch ${line}";
 	
-	
+	system($cmd1);
 	
 }
