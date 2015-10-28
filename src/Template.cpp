@@ -18,14 +18,16 @@ Template::Template(Query _query) {
 	setQueryLength(_query.getQueryLength());
 }
 
-void Template::loadTemplateInfo(string proteinLocation) {
+int Template::loadTemplateInfo(string proteinLocation) {
 	//open protein db file, read and store protein infomation
 	string proteinFile(proteinLocation);
 	proteinFile += templateName;
 	proteinFile += ".db";
+	//cout<<templateName<<endl;
 	FILE* fptr = fopen((char*) proteinFile.c_str(), "r");
 	if (fptr == NULL) {
 		cout << "input file: " << proteinFile << " can't open" << endl;
+		return -1;
 	} else {
 		int lineLength = 5000;
 		char line[lineLength];
@@ -59,7 +61,7 @@ void Template::loadTemplateInfo(string proteinLocation) {
 					fscanf(fptr, "%lf", &temp);
 					Xs[i] = temp;
 					//if (i % 10 == 0) {
-					//	cout << endl;
+						//cout << endl;
 					//}
 					//cout << Xs[i] << " ";
 				}
@@ -95,6 +97,7 @@ void Template::loadTemplateInfo(string proteinLocation) {
 			}
 		}
 	}
+	return 0;
 
 }
 Template::~Template() {
