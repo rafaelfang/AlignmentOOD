@@ -13,6 +13,7 @@
 #include "Template.h"
 #include "BlastParser.h"
 #include "HHSearchParser.h"
+#include "CNFSearchParser.h"
 #include <stdlib.h>
 using namespace std;
 
@@ -45,7 +46,19 @@ int main(int argc, char* argv[]) {
 		hhsearchParser.parseFile(alignmentResultLocation);
 		hhsearchParser.storeRecords(experimentLocation);
 		hhsearchParser.storeCoordinates(experimentLocation,
-						proteinDatabaseLocation);
+				proteinDatabaseLocation);
+	}
+
+	if (strcmp(argv[1], "-cnfSearch") == 0) {
+		string querySeqLocation("/home/cf797/test/casp11Seq/");
+		string alignmentResultLocation("/home/cf797/test/testAlignment/");
+		string experimentLocation("/home/cf797/test/casp11OutputResultFolder/");
+		string proteinDatabaseLocation("/home/lihongb/DATABASE/DBInfo/");
+		CNFSearchParser cnfSearchParser(argv[2]);
+		cnfSearchParser.parseFile(alignmentResultLocation);
+		cnfSearchParser.storeRecords(experimentLocation);
+		cnfSearchParser.storeCoordinates(experimentLocation,
+				proteinDatabaseLocation);
 	}
 
 	return 0;
