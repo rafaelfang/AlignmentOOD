@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
 
 	if (strcmp(argv[1], "-cnfSearch") == 0) {
 		string querySeqLocation("/home/cf797/test/casp11Seq/");
-		string alignmentResultLocation("/home/cf797/test/testAlignment/");
+		string alignmentResultLocation("/home/cf797/test/casp11Alignment/");
 		string experimentLocation("/home/cf797/test/casp11OutputResultFolder/");
 		string proteinDatabaseLocation("/home/lihongb/DATABASE/DBInfo/");
 		CNFSearchParser cnfSearchParser(argv[2]);
