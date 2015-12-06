@@ -11,7 +11,7 @@ Template::Template() {
 	// TODO Auto-generated ructor stub
 
 }
-Template::Template(Query _query) {
+Template::Template(Target _query) {
 	// TODO Auto-generated ructor stub
 	setTargetName(_query.getTargetName());
 	setQuery(_query.getQuery());

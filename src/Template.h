@@ -10,10 +10,10 @@
 
 #include "Query.h"
 
-class Template: public Query {
+class Template: public Target {
 public:
 	Template();
-	Template(Query);
+	Template(Target);
 	virtual ~Template();
 	string& getMethodUsed();
 	void setMethodUsed(string& methodUsed);
