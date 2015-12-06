@@ -24,13 +24,12 @@ int main(int argc, char* argv[]) {
 		cout << "<excutable> <type> <rootName>" << endl;
 		return 0;
 	}
-
+	string querySeqLocation("/home/cf797/test/casp11Seq/");
+	string alignmentResultLocation("/home/cf797/test/casp11_01092013_blastpgp_hhsearch_local/");
+	string experimentLocation("/home/cf797/test/casp11_01092013_blastpgp_hhsearch_local_3dCoords/");
+	string proteinDatabaseLocation("/home/lihongb/DATABASE/DBInfo/");
 	if (strcmp(argv[1], "-blaPDB") == 0) {
 
-		string querySeqLocation("/home/cf797/test/casp11Seq/");
-		string alignmentResultLocation("/home/cf797/test/casp11Alignment/");
-		string experimentLocation("/home/cf797/test/casp11OutputResultFolder/");
-		string proteinDatabaseLocation("/home/lihongb/DATABASE/DBInfo/");
 		BlastParser blastParser(argv[2]);
 		blastParser.parseFile(alignmentResultLocation);
 		blastParser.storeRecords(experimentLocation);
@@ -38,10 +37,7 @@ int main(int argc, char* argv[]) {
 				proteinDatabaseLocation);
 	}
 	if (strcmp(argv[1], "-hhsearch") == 0) {
-		string querySeqLocation("/home/cf797/test/casp11Seq/");
-		string alignmentResultLocation("/home/cf797/test/casp11Alignment/");
-		string experimentLocation("/home/cf797/test/casp11OutputResultFolder/");
-		string proteinDatabaseLocation("/home/lihongb/DATABASE/DBInfo/");
+
 		HHSearchParser hhsearchParser(argv[2]);
 		hhsearchParser.parseFile(alignmentResultLocation);
 		hhsearchParser.storeRecords(experimentLocation);
@@ -50,10 +46,7 @@ int main(int argc, char* argv[]) {
 	}
 
 	if (strcmp(argv[1], "-cnfSearch") == 0) {
-		string querySeqLocation("/home/cf797/test/casp11Seq/");
-		string alignmentResultLocation("/home/cf797/test/casp11Alignment/");
-		string experimentLocation("/home/cf797/test/casp11OutputResultFolder/");
-		string proteinDatabaseLocation("/home/lihongb/DATABASE/DBInfo/");
+
 		CNFSearchParser cnfSearchParser(argv[2]);
 		cnfSearchParser.parseFile(alignmentResultLocation);
 		cnfSearchParser.storeRecords(experimentLocation);
