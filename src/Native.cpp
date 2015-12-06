@@ -11,7 +11,7 @@ Native::Native() {
 	// TODO Auto-generated ructor stub
 
 }
-Native::Native(Query _query) {
+Native::Native(Target _query) {
 	setTargetName(_query.getTargetName());
 	setQuery(_query.getQuery());
 	setQueryLength(_query.getQueryLength());

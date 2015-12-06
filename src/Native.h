@@ -10,10 +10,10 @@
 
 #include "Query.h"
 
-class Native: public Query {
+class Native: public Target {
 public:
 	Native();
-	Native(Query);
+	Native(Target);
 	virtual ~Native();
 	Point* getCAlphaCoords();
 	void setCAlphaCoords(Point*);
