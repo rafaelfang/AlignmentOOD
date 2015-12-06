@@ -68,27 +68,38 @@ void HHSearchParser::storeCoordinates(string experimentLocation,
 	ofstream myfile;
 	string outputFile(experimentLocation);
 	outputFile += rootName;
-	outputFile += "_coords_hhsearch.txt";
-	myfile.open((char*) outputFile.c_str());
+	outputFile += "/";
+	mkdir(outputFile.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
 
 	for (int i = 0; i < hhsearchRecords.size(); i++) {
-
+		ofstream myfile;
+		string partFilename(outputFile);
+		partFilename += "hhsearch_";
+		char buffer[10];
+		sprintf(buffer, "%d", i);
+		partFilename += buffer;
+		partFilename += "_";
+		partFilename += hhsearchRecords[i].getTemplateName();
+		partFilename += ".txt";
+		myfile.open((char*) partFilename.c_str());
 		int queryStart = hhsearchRecords[i].getQueryStart();
 		int queryEnd = hhsearchRecords[i].getQueryEnd();
 		hhsearchRecords[i].loadTemplateInfo(proteinDatabaseLocation);
 		int queryPointsArrSize = queryEnd - queryStart + 1;
 		Point *queryPoints = (Point*) malloc(
 				sizeof(Point) * queryPointsArrSize);
-		queryPoints = hhsearchRecords[i].fetchSubjectAlignedPart3DPointsForQuery();
-		myfile << "Hit" << i << endl;
+		queryPoints =
+				hhsearchRecords[i].fetchSubjectAlignedPart3DPointsForQuery();
+
 		for (int j = 0; j < queryPointsArrSize; j++) {
 			myfile << "\t" << queryPoints[j].getX() << ","
 					<< queryPoints[j].getY() << "," << queryPoints[j].getZ()
 					<< endl;
 		}
 		free(queryPoints);
+		myfile.close();
 	}
-	myfile.close();
+
 }
 
 void HHSearchParser::parseFile(string hhsearchResultFileLocation) {
