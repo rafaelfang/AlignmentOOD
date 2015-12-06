@@ -8,6 +8,7 @@
 #ifndef PARSER_H_
 #define PARSER_H_
 #include <string>
+#include <sys/stat.h>
 using namespace std;
 class Parser {
 public:
