@@ -14,11 +14,11 @@
 #include <string.h>
 #include "Point.h"
 using namespace std;
-class Query {
+class Target {
 public:
-	Query();
-	Query(string );
-	virtual ~Query();
+	Target();
+	Target(string );
+	virtual ~Target();
 	string& getQuery();
 	void setQuery(string& query);
 	int getQueryLength();

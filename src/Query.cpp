@@ -7,38 +7,38 @@
 
 #include "Query.h"
 
-Query::Query() {
+Target::Target() {
 	// TODO Auto-generated ructor stub
 
 }
-Query::Query(string _targetName) {
+Target::Target(string _targetName) {
 	// TODO Auto-generated ructor stub
 	setTargetName(_targetName);
 }
-Query::~Query() {
+Target::~Target() {
 	// TODO Auto-generated destructor stub
 }
 
-string& Query::getQuery() {
+string& Target::getQuery() {
 	return query;
 }
 
-void Query::setQuery(string& query) {
+void Target::setQuery(string& query) {
 	this->query = query;
 }
 
-int Query::getQueryLength() {
+int Target::getQueryLength() {
 	return queryLength;
 }
 
-void Query::setQueryLength(int queryLength) {
+void Target::setQueryLength(int queryLength) {
 	this->queryLength = queryLength;
 }
 
-string& Query::getTargetName() {
+string& Target::getTargetName() {
 	return targetName;
 }
 
-void Query::setTargetName(string& targetName) {
+void Target::setTargetName(string& targetName) {
 	this->targetName = targetName;
 }
