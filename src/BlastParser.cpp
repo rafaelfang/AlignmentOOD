@@ -63,14 +63,25 @@ void BlastParser::storeRecords(string resultPosition) {
 }
 void BlastParser::storeCoordinates(string experimentLocation,
 		string proteinDatabaseLocation) {
-	ofstream myfile;
+
 	string outputFile(experimentLocation);
 	outputFile += rootName;
-	outputFile += "_coords_blast.txt";
-	myfile.open((char*) outputFile.c_str());
+	outputFile += "/";
+	mkdir(outputFile.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+	//outputFile += "_coords_blast.txt";
+	//myfile.open((char*) outputFile.c_str());
 
 	for (int i = 0; i < blastRecords.size(); i++) {
-
+		ofstream myfile;
+		string partFilename(outputFile);
+		partFilename += "blast_";
+		char buffer[10];
+		sprintf(buffer, "%d", i);
+		partFilename += buffer;
+		partFilename += "_";
+		partFilename += blastRecords[i].getTemplateName();
+		partFilename += ".txt";
+		myfile.open((char*) partFilename.c_str());
 		int queryStart = blastRecords[i].getQueryStart();
 		int queryEnd = blastRecords[i].getQueryEnd();
 		blastRecords[i].loadTemplateInfo(proteinDatabaseLocation);
@@ -78,15 +89,16 @@ void BlastParser::storeCoordinates(string experimentLocation,
 		Point *queryPoints = (Point*) malloc(
 				sizeof(Point) * queryPointsArrSize);
 		queryPoints = blastRecords[i].fetchSubjectAlignedPart3DPointsForQuery();
-		myfile << "Hit" << i << endl;
+
 		for (int j = 0; j < queryPointsArrSize; j++) {
 			myfile << "\t" << queryPoints[j].getX() << ","
 					<< queryPoints[j].getY() << "," << queryPoints[j].getZ()
 					<< endl;
 		}
 		free(queryPoints);
+		myfile.close();
 	}
-	myfile.close();
+
 }
 void BlastParser::parseFile(string blastResultFileLocation) {
 	string blastResultFile(blastResultFileLocation);
